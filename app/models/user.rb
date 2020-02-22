@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   mount_uploader :icon, ImageUploader
 
+  validates :name, presence: true
+
   def self.find_or_create_by_email(email)
     user = find_or_initialize_by(email: email)
     if user.new_record?
