@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :init_team, if: :user_signed_in?
   before_action :set_working_team, if: :user_signed_in?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def change_keep_team(user, current_team)
     user.keep_team_id = current_team.id
@@ -15,5 +16,9 @@ class ApplicationController < ActionController::Base
 
   def init_team
     current_user.assigns.create!(team_id: Team.first.id) if current_user.teams.blank?
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 end
