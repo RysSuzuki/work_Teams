@@ -12,6 +12,11 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
+        <% if @favorite.present? %>
+          <td><%= link_to 'お気に入り解除', favorite_path(article_id: @article.id, article_id: @article.id), class: "btn btn-danger", method: :delete %></td>
+        <% else %>
+          <td><%= link_to 'お気に入り登録', favorites_path(article_id: @article.id), class: "btn btn-primary", method: :post %></td>
+        <% end %>
         <td><%= link_to 'Show', article %></td>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>

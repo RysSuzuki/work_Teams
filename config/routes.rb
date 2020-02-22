@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'favorites/index'
+  get 'favorites/create'
+  get 'favorites/destroy'
   root 'statics#top'
   get :dashboard, to: 'teams#dashboard'
 
