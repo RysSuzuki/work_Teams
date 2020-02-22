@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2020_02_22_111227) do
     t.datetime "updated_at", null: false
     t.string "icon"
     t.integer "keep_team_id"
-    t.string "name"
+    t.string "name", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
