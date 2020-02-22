@@ -12,6 +12,7 @@ User.seed(
   id: 10, email: Faker::Internet.email, name: 'test10', password: 'password'
 )
 
+
 Team.seed(
   :id,
   {id: 1, owner_id: 1, name: 'BasicTeam'},
